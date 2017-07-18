@@ -5,4 +5,4 @@ pattern = load_pattern()
 
 explainer = nn_patterns.create_explainer("patternnet", output_layer, patterns=patterns)
 
-abcabc
+explainer = nn_patterns.create_explainer("patternnet", output_layer, patterns=patterns)
