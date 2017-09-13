@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 '''
 @author: Vignesh Srinivasan
 @author: Sebastian Lapuschkin
@@ -56,7 +57,7 @@ class Sequential(Module):
             the output of the network's final layer
         '''
         if 'conv' in self.modules[0].name:
-            if self.modules[0].batch_size is None or self.modules[0].input_depth is None or self.modules[0].input_dim is None:
+            if self.modules[0].batch_size is None or self.modules[0].input_depth is None or self.modules[0].input_x_dim is None or self.modules[0].input_y_dim is None or self.modules[0].input_z_dim is None:
                 raise ValueError('Expects batch_input_shape= AND input_depth= AND input_dim= for the first layer ')
         elif 'linear' in self.modules[0].name:
             if self.modules[0].batch_size is None or self.modules[0].input_dim is None:
@@ -68,7 +69,7 @@ class Sequential(Module):
         for m in self.modules:
             m.batch_size=self.modules[0].batch_size
             print m.name+'::',
-            print X.get_shape().as_list()
+            print X.get_shape().as_list() #tensor의 크기 계산
             
             X = m.forward(X)
             
